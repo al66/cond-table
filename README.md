@@ -69,7 +69,7 @@ var testData = [
 // create an instance
 let table = new Table(testTable);
 
-
+// use table to process data sets 
 for (let i=0; i< testData.length; i++) {
     let result = table.result(testData[i]); // result.risk is set now
     console.log(result.risk);
@@ -83,7 +83,7 @@ for (let i=0; i< testData.length; i++) {
 let table = new Table(testTable);
 
 // ...or set and compile separately
-let table = new Table(testTable);
+let table = new Table();
 table.compile(testTable);
 ```
 
