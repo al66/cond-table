@@ -1,4 +1,8 @@
 # cond-table
+[![Build Status](https://travis-ci.org/al66/cond-table.svg?branch=master)](https://travis-ci.org/al66/cond-table)
+[![Coverage Status](https://coveralls.io/repos/github/al66/cond-table/badge.svg?branch=master)](https://coveralls.io/github/al66/cond-table?branch=master)
+
+[![NPM](https://nodei.co/npm/cond-table.png)](https://nodei.co/npm/cond-table/)
 
 Checks data object against decision table.
 
