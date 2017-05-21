@@ -57,6 +57,7 @@ var testTable = {
     }
 };
 
+// example data sets, to be checked  
 var testData = [
     { 'age': '65', 'hist':'good'},
     { 'age': '70', 'hist':'bad'},
@@ -65,15 +66,24 @@ var testData = [
     { 'age': '10', 'hist':'good'}
 ];
 
+// create an instance
+let table = new Table(testTable);
 
-let table = new Table();
-table.compile(testTable);
+
 for (let i=0; i< testData.length; i++) {
-    let result = table.result(testData[i]); // result.z is set now
-    console.log(result.z);
+    let result = table.result(testData[i]); // result.risk is set now
+    console.log(result.risk);
 };
 
 ```
 
-## Examples
+## More Examples
+```js
+// create an instance direct..
+let table = new Table(testTable);
+
+// ...or set and compile separately
+let table = new Table(testTable);
+table.compile(testTable);
+```
 

@@ -166,12 +166,11 @@ describe('Test table 2', function() {
         { 'age': '10', 'hist':'good', 'risk':'Low'}
     ];
 
-    let table = new Table();
-    table.compile(testTable);
+    let table = new Table(testTable);
     for (let i=0; i< testData.length; i++) {
         it('Test data line ' + i, function(done){
             let result = table.result(testData[i]);
-            expect(result.z).to.be.equals(testData[i].z);
+            expect(result.risk).to.be.equals(testData[i].risk);
             done();
         });
     }
