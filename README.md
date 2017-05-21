@@ -1,6 +1,6 @@
 # cond-table
 
-Checks data object against descition table.
+Checks data object against decision table.
 
 ## Usage
 ```js
