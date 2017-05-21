@@ -1,0 +1,38 @@
+{
+  "name": "cond-table",
+  "version": "0.0.1",
+  "description": "decision table",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --reporter spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/al66/cond-table.git"
+  },
+  "keywords": [
+    "decision",
+    "condition",
+    "table"
+  ],
+  "author": "Andreas Leinen <andreas.leinen@imicros.de> (www.imicros.de)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/al66/cond-table/issues"
+  },
+  "homepage": "https://github.com/al66/cond-table#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "coveralls": "^2.13.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.3.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "tape": "^4.6.3"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "checkcond": "0.0.5"
+  }
+}
