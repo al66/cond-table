@@ -12,9 +12,11 @@
     "url": "git+https://github.com/al66/cond-table.git"
   },
   "keywords": [
+    "rule", "rules",
+    "rules-engine",
     "decision",
-    "condition",
-    "table"
+    "decision-engine",
+    "DMN"
   ],
   "author": "Andreas Leinen <andreas.leinen@imicros.de> (www.imicros.de)",
   "license": "MIT",

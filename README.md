@@ -6,6 +6,8 @@
 
 Checks data object against decision table.
 
+ -> [DMN Notation](http://www.omg.org/spec/DMN/1.1/PDF/).
+
 ## Usage
 ```js
 const Table = require('cond-table').Table;
