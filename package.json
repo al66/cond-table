@@ -1,6 +1,6 @@
 {
   "name": "cond-table",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "decision table",
   "main": "index.js",
   "scripts": {
@@ -12,7 +12,8 @@
     "url": "git+https://github.com/al66/cond-table.git"
   },
   "keywords": [
-    "rule", "rules",
+    "rule",
+    "rules",
     "rules-engine",
     "decision",
     "decision-engine",
@@ -36,6 +37,7 @@
     "test": "test"
   },
   "dependencies": {
-    "checkcond": "0.0.5"
+    "checkcond": "0.0.5",
+    "expr-eval": "1.0.0"
   }
 }

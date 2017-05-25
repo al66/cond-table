@@ -80,6 +80,7 @@ for (let i=0; i< testData.length; i++) {
 ```
 
 ## More Examples
+### Initiate and compile in separate steps
 ```js
 // create an instance direct..
 let table = new Table(testTable);
@@ -88,4 +89,60 @@ let table = new Table(testTable);
 let table = new Table();
 table.compile(testTable);
 ```
-
+### Formular expressions in input
+```js
+let testTable = {
+    description: 'Simple table',
+    hitPolicy: 'Unique',
+    input: {
+        'x': {
+            description: 'Input x',
+            type: 'number'
+        },
+        'y': {
+            description: 'Input y',
+            type: 'number',
+            default: 2
+        },
+        'a': {
+            description: 'Formula Input',
+            type: 'expression',        // optional
+            expression: '2 * x + y'    // check expr-eval for syntax
+        }
+    },
+    output: {
+        'z': {},
+        't': {}
+    },
+    rules: {
+        'First rule': {
+            'x': '< 5, [20..30]',
+            'y': '> 6,[30..40]',
+            'a': '< 15',                // uses the calculated value
+            'z': '7',
+            't': 'first'
+        },
+        'Second rule': {
+            'x': '> 5',
+            'a': '> 15',
+            'z': '2',
+            't': 'second'
+        }
+    }
+};
+```
+### Set default values for input (if value is not provided in data sets)
+```js
+    input: {
+        'x': {
+            description: 'Input x',
+            type: 'number',
+            default: '0'                // 0 must be in quotes
+        },
+        'y': {
+            description: 'Input y',
+            type: 'number',
+            default: 2                  // with or without quotes
+        }
+    }
+```

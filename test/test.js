@@ -70,7 +70,12 @@ describe('Test table 1', function() {
             'y': {
                 description: 'Input y',
                 type: 'number',
-                default: 2
+                default: '0'
+            },
+            'a': {
+                description: 'Formula Input',
+                type: 'expression',
+                expression: '2 * x + y'
             }
         },
         output: {
@@ -83,10 +88,12 @@ describe('Test table 1', function() {
             'First rule': {
                 'x': '< 5, [20..30]',
                 'y': '> 6,[30..40]',
+                'a': '< 15',
                 'z': '7'
             },
             'Second rule': {
                 'x': '> 5',
+                'a': '> 15',
                 'z': '2'
             }
         }
@@ -176,6 +183,65 @@ describe('Test table 2', function() {
     }
 });
 
+describe('Multiple output', function() {
+    let testTable = {
+        description: 'Simple table',
+        hitPolicy: 'Unique',
+        input: {
+            'x': {
+                description: 'Input x',
+                type: 'number'
+            },
+            'y': {
+                description: 'Input y',
+                type: 'number',
+                default: 2
+            },
+            'a': {
+                description: 'Formula Input',
+                type: 'expression',
+                expression: '2 * x + y'
+            }
+        },
+        output: {
+            'z': {},
+            't': {}
+        },
+        rules: {
+            'First rule': {
+                'x': '< 5, [20..30]',
+                'y': '> 6,[30..40]',
+                'a': '< 15',
+                'z': '7',
+                't': 'first'
+            },
+            'Second rule': {
+                'x': '> 5',
+                'a': '> 15',
+                'z': '2',
+                't': 'second'
+            }
+        }
+    };
+    let testData = [
+        { 'x': '3', 'y':'2', 'z':null, 't':null},
+        { 'x': '3', 'y':'7', 'z':'7', 't':'first'},
+        { 'x': '6', 'y':'7', 'z':'2', 't':'second'},
+        { 'x': '20', 'y':'37', 'z':'7', 't':'first'},
+        { 'x': '6', 'z':'2', 't':'second'}
+    ];
+
+    let table = new Table();
+    table.compile(testTable);
+    for (let i=0; i< testData.length; i++) {
+        it('Test data line ' + i, function(done){
+            let result = table.result(testData[i]);
+            expect(result.z).to.be.equals(testData[i].z);
+            expect(result.t).to.be.equals(testData[i].t);
+            done();
+        });
+    }
+});
 
 describe('Incomplete Table', function() {
     let testTable = {
