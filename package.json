@@ -1,6 +1,6 @@
 {
   "name": "cond-table",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "decision table",
   "main": "index.js",
   "scripts": {

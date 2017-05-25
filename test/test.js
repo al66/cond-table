@@ -76,6 +76,11 @@ describe('Test table 1', function() {
                 description: 'Formula Input',
                 type: 'expression',
                 expression: '2 * x + y'
+            },
+            'b': {
+                description: 'Formula Input',
+                type: 'expression',
+                expression: 'x > y'
             }
         },
         output: {
@@ -89,12 +94,20 @@ describe('Test table 1', function() {
                 'x': '< 5, [20..30]',
                 'y': '> 6,[30..40]',
                 'a': '< 15',
+                'b': 'false',
                 'z': '7'
             },
             'Second rule': {
                 'x': '> 5',
                 'a': '> 15',
+                'b': 'false',
                 'z': '2'
+            },
+            'Third rule': {
+                'x': '> 5',
+                'a': '< 15',
+                'b': 'true',
+                'z': '3'
             }
         }
     };
@@ -102,16 +115,16 @@ describe('Test table 1', function() {
         { 'x': '3', 'y':'2', 'z':null},
         { 'x': '3', 'y':'7', 'z':'7'},
         { 'x': '6', 'y':'7', 'z':'2'},
-        { 'x': '20', 'y':'37', 'z':'7'},
-        { 'x': '6', 'z':'2'}
+        { 'x': '20', 'y':'37', 'z':null},
+        { 'x': '6', 'z':'3'}
     ];
-
+    let testCopy = (JSON.parse(JSON.stringify(testData)))
     let table = new Table();
     table.compile(testTable);
     for (let i=0; i< testData.length; i++) {
         it('Test data line ' + i, function(done){
             let result = table.result(testData[i]);
-            expect(result.z).to.be.equals(testData[i].z);
+            expect(result.z).to.be.equals(testCopy[i].z);
             done();
         });
     }
@@ -172,12 +185,13 @@ describe('Test table 2', function() {
         { 'age': '20', 'hist':'bad', 'risk':'Medium'},
         { 'age': '10', 'hist':'good', 'risk':'Low'}
     ];
+    let testCopy = (JSON.parse(JSON.stringify(testData)))
 
     let table = new Table(testTable);
     for (let i=0; i< testData.length; i++) {
         it('Test data line ' + i, function(done){
             let result = table.result(testData[i]);
-            expect(result.risk).to.be.equals(testData[i].risk);
+            expect(result.risk).to.be.equals(testCopy[i].risk);
             done();
         });
     }
@@ -220,24 +234,38 @@ describe('Multiple output', function() {
                 'a': '> 15',
                 'z': '2',
                 't': 'second'
-            }
+            },
+            'Third rule': {
+                'x': '< 5, [20..30]',
+                'y': '> 6,[30..40]',
+                'a': '> 15',
+                'z': '7',
+                't': 'third'
+            },
+            '4th rule': {
+                'x': '> 5',
+                'a': '< 15',
+                'z': '5',
+                't': '4th'
+            }            
         }
     };
     let testData = [
         { 'x': '3', 'y':'2', 'z':null, 't':null},
         { 'x': '3', 'y':'7', 'z':'7', 't':'first'},
         { 'x': '6', 'y':'7', 'z':'2', 't':'second'},
-        { 'x': '20', 'y':'37', 'z':'7', 't':'first'},
-        { 'x': '6', 'z':'2', 't':'second'}
+        { 'x': '20', 'y':'37', 'z':'7', 't':'third'},
+        { 'x': '6', 'z':'5', 't':'4th'}
     ];
+    let testCopy = (JSON.parse(JSON.stringify(testData)))
 
     let table = new Table();
     table.compile(testTable);
     for (let i=0; i< testData.length; i++) {
         it('Test data line ' + i, function(done){
             let result = table.result(testData[i]);
-            expect(result.z).to.be.equals(testData[i].z);
-            expect(result.t).to.be.equals(testData[i].t);
+            expect(result.z).to.be.equals(testCopy[i].z);
+            expect(result.t).to.be.equals(testCopy[i].t);
             done();
         });
     }
