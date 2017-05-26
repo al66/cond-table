@@ -118,7 +118,8 @@ describe('Test table 1', function() {
         { 'x': '20', 'y':'37', 'z':null},
         { 'x': '6', 'z':'3'}
     ];
-    let testCopy = (JSON.parse(JSON.stringify(testData)))
+    let testCopy = (JSON.parse(JSON.stringify(testData)));
+    
     let table = new Table();
     table.compile(testTable);
     for (let i=0; i< testData.length; i++) {

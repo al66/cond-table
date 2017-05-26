@@ -1,6 +1,6 @@
 {
   "name": "cond-table",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "decision table",
   "main": "index.js",
   "scripts": {
@@ -37,7 +37,7 @@
     "test": "test"
   },
   "dependencies": {
-    "checkcond": "0.0.5",
+    "checkcond": "0.0.6",
     "expr-eval": "1.0.0"
   }
 }
